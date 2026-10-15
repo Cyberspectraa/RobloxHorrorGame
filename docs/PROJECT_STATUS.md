@@ -16,6 +16,10 @@
 - #8 All endings, replay and cosmetic passes
 See issue descriptions for acceptance, file ownership and PR requirements.
 
+## Owner decision — 2026-10-15
+- **APPROVED**: keep THE RELAY BELOW in the **psychological and realistic horror** direction, not supernatural/reality-distortion horror and not constant aggressive survival horror. Believable facility, slow dread and sound-hunting creature are now binding creative guardrails. See docs/GAME_DESIGN.md and docs/ART_DIRECTION.md.
+- This approval is **creative scope**, not implementation verification or blanket approval of every provisional feature.
+
 ## Pending owner design sign-off
 - THE RELAY BELOW name, Bracken Point setting, The Return antagonist and the 3 endings.
 - First-person 1–4 players, target 25–40 min, cosmetic-only monetization.
