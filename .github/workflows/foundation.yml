@@ -1,0 +1,38 @@
+name: Foundation checks
+on:
+  pull_request:
+  push:
+    branches: [main, 'feat/1-*']
+permissions:
+  contents: read
+jobs:
+  foundation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned official CLI tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/relay-tools/rojo" "$RUNNER_TEMP/relay-tools/luau"
+          curl --fail --location --retry 3 https://github.com/rojo-rbx/rojo/releases/download/v7.7.1/rojo-7.7.1-linux-x86_64.zip -o "$RUNNER_TEMP/rojo.zip"
+          curl --fail --location --retry 3 https://github.com/luau-lang/luau/releases/download/0.742/luau-ubuntu.zip -o "$RUNNER_TEMP/luau.zip"
+          unzip -q "$RUNNER_TEMP/rojo.zip" -d "$RUNNER_TEMP/relay-tools/rojo"
+          unzip -q "$RUNNER_TEMP/luau.zip" -d "$RUNNER_TEMP/relay-tools/luau"
+          chmod +x "$RUNNER_TEMP/relay-tools/rojo/rojo" "$RUNNER_TEMP/relay-tools/luau/luau" "$RUNNER_TEMP/relay-tools/luau/luau-compile" "$RUNNER_TEMP/relay-tools/luau/luau-analyze"
+          echo "$RUNNER_TEMP/relay-tools/rojo" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/relay-tools/luau" >> "$GITHUB_PATH"
+      - name: Structure, Rojo builds and sourcemap
+        shell: pwsh
+        run: ./tools/Validate-Project.ps1 -Build
+      - name: Compile all Luau and analyze pure state module
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' source; do
+            luau-compile --binary "$source" > /dev/null
+          done < <(find src tests -name '*.luau' -print0)
+          luau-analyze src/server/Foundation/StateMachine.luau tests/state.spec.luau
+      - name: State behavior tests
+        run: luau tests/state.spec.luau
