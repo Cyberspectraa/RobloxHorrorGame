@@ -1,12 +1,14 @@
 # Project status / handoff — 2026-10-15
 ## Current confirmed facts
-- Repository Cyberspectraa/RobloxHorrorGame started empty; main now includes approved-as-proposals design documentation, a minimal Rojo project and **unverified** server/client boot scripts.
+- Repository Cyberspectraa/RobloxHorrorGame started empty; the Issue #1 feature branch adds a Rojo foundation, typed bootstrap/config/logging, server-only state and player lifecycle, tests and Windows setup. Roblox runtime status: **IMPLEMENTED-UNTESTED**; see docs/FOUNDATION_VERIFICATION.md. This is not a statement that the PR is merged.
 - Official Roblox docs confirm client-side AudioAnalyzer volume and optional speech-to-text APIs; practical voice eligibility and integration have NOT been tested.
 - No Roblox Studio place, playable loop, finished creature, music track, final sound asset, uploaded gamepass or publishable experience has been created or verified.
-- Phase: M0 pre-production completed as a design draft; M1 development has not passed acceptance.
+- Phase: M0 pre-production completed as a design draft; M1 foundation implemented for review, but Studio/private-place acceptance remains pending. No later milestone started.
+
+- GitHub CI verified Rojo production/test builds, sourcemap, Luau compilation/type analysis of the pure state module, and 19 state checks. Studio-specific checks remain untested.
 
 ## Created GitHub issues — source of task scope
-- #1 M1 Foundation / Rojo / private Studio sync — **recommended next Codex task**
+- #1 M1 Foundation / Rojo / private Studio sync — **implementation in PR #9; CLI CI passed, awaiting Studio evidence and owner review**
 - #2 World sound events + attenuation
 - #3 The Return AI perception/navigation (depends on #2)
 - #4 Opt-in mic AudioAnalyzer implementation (depends on #1 and #2)

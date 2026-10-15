@@ -15,8 +15,10 @@ A first-person, sound-driven survival horror experience for Roblox.
 - [Asset register](docs/ASSETS.md) — art/sound provenance and tracking.
 - [Agent instructions](AGENTS.md) — mandatory handoff rules for ChatGPT, Codex and anyone contributing.
 
-## Build pipeline (planned)
-Roblox Studio + Rojo source synchronization + Git feature branches and pull requests. A Roblox Studio place and verified microphone integration are still required. Do not publish or claim the game is finished until the gates in the roadmap pass.
+## Foundation setup
+Follow [Windows and Studio setup](docs/STUDIO_SETUP.md) for the pinned Rojo CLI/plugin, sync instructions and exact test steps. The foundation includes server/client initialization, shared configuration/logging and a server-only lifecycle/state framework. It is **not playable**, and Studio verification remains pending; see the [verification record](docs/FOUNDATION_VERIFICATION.md).
+
+Roblox Studio + Rojo source synchronization + Git feature branches and pull requests. A private test place and actual runtime evidence are still required. Do not publish publicly or claim the game is finished until the gates in the roadmap pass.
 
 ## Working agreement
 The GitHub repository is the **only persistent source of truth** shared by ChatGPT and Codex. Normal chat messages are not project commits; Codex cannot be expected to read those messages. One subsystem per branch, no concurrent edits to the same files, and no direct feature changes to main. See AGENTS.md.

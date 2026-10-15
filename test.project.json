@@ -1,0 +1,13 @@
+{
+  "name": "TheRelayBelowFoundationTests",
+  "serveAddress": "127.0.0.1",
+  "servePort": 34873,
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": { "Shared": { "$path": "src/shared" } },
+    "ServerScriptService": {
+      "Foundation": { "$path": "src/server/Foundation" },
+      "FoundationTests": { "$path": "tests/studio" }
+    }
+  }
+}

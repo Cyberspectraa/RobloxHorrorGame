@@ -1,5 +1,5 @@
 # Technical architecture and scope ownership
-Status: architecture proposal; no gameplay implementation yet.
+Status: foundation implemented for Issue #1; Roblox runtime verification pending. Gameplay services below remain planned.
 
 ## Tooling
 Roblox Studio authoring + source-controlled Luau with Rojo (rojo-rbx) for script synchronization. Editor may be VS Code + Luau tooling, but Roblox Studio remains required for environment assembly, GUI/asset previews and genuine runtime tests. GitHub for PRs, Issues and release tags. Keep dependencies minimal until a need is demonstrated.
@@ -36,13 +36,18 @@ Use a server-driven blackboard with scored recent acoustic events (strength, mat
 ## Quality and platform requirements
 Single publishable place initially to reduce cross-place teleports; separate lobby in same environment. StreamingEnabled only when room unload behavior audited, with persistent critical objective models when appropriate. Controller/gamepad input and mobile touch layouts tracked before release. Set graphics fallback for particles, postprocessing and soft shadows; measure low-end hardware. Build an asset budget and record performance metrics, not 'looks smooth' by impression.
 
-## Setup steps when development begins
-1. Clone repository and install Roblox Studio + Rojo executable and Studio plugin.
-2. Verify version and default.project.json schema.
-3. Run Rojo serve to sync Luau; create/publish a private Roblox place.
-4. Configure VoiceChatService UseAudioApi = Enabled for voice experiments, only after eligibility/opt-in onboarding exists.
-5. Make the first vertical slice in one production wing, commit source + reproducible place reference, and capture a Studio video/log.
-6. Do not merge voice mechanics until a real eligible-user test is recorded.
+## Issue #1 foundation and setup appendix
+Use [STUDIO_SETUP.md](STUDIO_SETUP.md) for Windows installation, Rojo 7.7.1, source ownership, CLI checks, Studio solo/two-client tests and private publishing. Actual evidence and limitations are in [FOUNDATION_VERIFICATION.md](FOUNDATION_VERIFICATION.md).
+
+- Shared `Config` holds public settings only; `BuildInfo.IsPlayable` stays false. `Logger.new(scope, debugEnabled)` produces consistent INFO/DEBUG/ERROR messages, with debug off by default. No remote telemetry or player/audio payload logging.
+- Both bootstrap entry points catch startup failures with tracebacks. Client dependency waits are bounded to avoid silent infinite waits during incomplete replication/sync. Server dependencies are expected to exist in the built tree; missing dependencies fail immediately after the Shared folder check.
+- `Foundation/PlayerService.new()` exposes `start()`, `stop()`, `getCount()` and `contains(player)`. It subscribes before enumerating players, deduplicates joins, keys records by the Player instance, and disconnects/clears records on stop. Start/stop are idempotent; no character connections, custom respawn, persistence or join remotes are added.
+- `Foundation/StateMachine.new()` exposes `getState()` and `transition(nextState) -> (boolean, string?)`. Booting -> Lobby -> Gameplay -> Ending -> Lobby; Gameplay -> Lobby permits future aborts; all live states permit terminal Shutdown. Invalid/duplicate transitions do not mutate state. This server-only module is a lifecycle primitive, not RoundService or implemented game progression. Future round coordination must own an instance and call its API; the current bootstrap instance is intentionally private.
+- Bootstrap starts tracking players, enters Lobby, and binds cleanup to server shutdown. No automatic transition to Gameplay, replication, timers or polling. Future UI networking is a separate reviewed contract; no client inputs are accepted now.
+- Production Rojo maps only the original three source folders and preserves unknown siblings outside them. The test project is separate and must not be published or synced into production.
+- Default Roblox character spawning remains enabled by the Studio place; the source build contains no world geometry. Use a disposable Baseplate for spawn testing. Studio-authored assets still need a later export decision.
+
+Do not enable voice APIs or begin the vertical slice as part of #1. Voice remains dependent on the separate eligibility/opt-in work and actual eligible-user tests.
 
 ## ADRs (pending)
 ADR-001: Lobby and gameplay in one place initially, yes.
