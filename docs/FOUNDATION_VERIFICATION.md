@@ -10,7 +10,11 @@ Status: IMPLEMENTED-UNTESTED in Roblox Studio. Do not mark M1 complete.
 - `tools/Validate-Project.ps1 -Build`: structural assertions PASS; actual build BLOCKED: `rojo` command not found.
 - `luau tests/state.spec.luau`: BLOCKED: `luau` command not found. No local red/green behavior-test result is claimed.
 - Studio executable not found in the standard local installation directory; no running Studio process found, and this session has no native Studio control. Studio version and plugin version: NOT OBSERVED.
-- Automated CI is configured to install official pinned Rojo 7.7.1 and Luau 0.742, build production/test projects and sourcemap, compile every Luau source, analyze the pure state module/test, and run the behavior test. Check the PR's actual workflow result; configuration alone is not evidence of a pass.
+- Actual GitHub CI PASS on implementation commit `6743eca18351c655295f56c1e4946bbecd6397dd`: [push run 38798235564](https://github.com/Cyberspectraa/RobloxHorrorGame/actions/runs/38798235564) and [PR run 38798290295](https://github.com/Cyberspectraa/RobloxHorrorGame/actions/runs/38798290295). Job logs were read, not merely inferred from workflow configuration.
+- Verified with installed Rojo 7.7.1 on Ubuntu: production and isolated-test rbxlx builds, sourcemap generation and all 27 structural checks.
+- Verified with Luau 0.742: compilation of all 9 Luau source/test files, static analysis of the pure state module and test, and `PASS: 19 state machine checks`.
+- Independent code review found no blocking correctness/security defect. Its disposable-test-place warning is included in STUDIO_SETUP.md. Interactive lifecycle coverage remains a Studio test, not a CLI claim.
+- Initial CI emitted an actions/checkout@v4 Node 20 deprecation warning; the follow-up uses the current official checkout release. See PR checks for the latest tree.
 
 ## Not tested / not performed
 
