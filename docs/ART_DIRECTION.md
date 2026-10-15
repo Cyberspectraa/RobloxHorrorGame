@@ -1,5 +1,8 @@
 # Art direction and identity — THE RELAY BELOW
-Status: approved direction only after owner sign-off; no final assets yet.
+Status: psychological/realistic industrial direction APPROVED by owner on 2026-10-15. Specific assets and UI designs still need review; no final assets yet.
+
+## Approved visual guardrails
+The player should believe this underground relay station was built, maintained, damaged by seawater and finally abandoned. Use convincing materials, sensible scale, physical service routes and coherent equipment logic. Distort familiarity by subtle asymmetry, obscured sightlines and rare unexplained details, NOT overt magic, random floating objects, saturated red horror grading or constant surreal geometry. Horror grows from what the player hears and anticipates.
 
 ## What this must look like
 Industrial British coastal realism with a strange mid-1990s analogue culture. The contrast is between bureaucratic precision and living instability: immaculately numbered terminals against corroded salt-fog surfaces, straight conductor lines against the Return's uneven ceramic resonators. Scares are built from silhouettes, obscured rooms and shapes that have a function.
