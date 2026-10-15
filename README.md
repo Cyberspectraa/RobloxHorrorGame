@@ -1,9 +1,22 @@
 # THE RELAY BELOW
 
-A first-person sound-driven Roblox horror experience set in an abandoned coastal acoustic relay facility.
+A first-person, sound-driven survival horror experience for Roblox.
 
-**Current status:** Pre-production. Design, voice feasibility, repository workflow, and build milestones are being prepared. This repository is the shared source of truth for ChatGPT, Codex, and Roblox Studio work.
+**Status: pre-production.** The repository now contains the creative brief, design bible, microphone feasibility/specification, production roadmap, technical architecture, asset plan, and collaboration contract. It is **not yet a playable build**.
 
-Read `AGENTS.md` before editing and `docs/PROJECT_STATUS.md` for current status. Build gameplay in feature branches via reviewed pull requests. Roblox Studio is required for integration testing.
+## Read first
+- [Game design](docs/GAME_DESIGN.md) — story, loop, location, puzzles, creature, endings, monetization.
+- [Art direction](docs/ART_DIRECTION.md) — visual language, bespoke identity, typography, title screen, UX.
+- [Voice specification](docs/VOICE_SYSTEM.md) — Roblox API research, opt-in logic, privacy, fallbacks and implementation gates.
+- [Audio direction](docs/AUDIO_DIRECTION.md) — original score, sound design, dynamic mixing, subtitles.
+- [Architecture](docs/TECHNICAL_ARCHITECTURE.md) — Rojo project layout and server/client responsibilities.
+- [Production roadmap](docs/PRODUCTION_PLAN.md) — milestones, acceptance gates and playtests.
+- [Project status](docs/PROJECT_STATUS.md) — what is actually finished.
+- [Asset register](docs/ASSETS.md) — art/sound provenance and tracking.
+- [Agent instructions](AGENTS.md) — mandatory handoff rules for ChatGPT, Codex and anyone contributing.
 
-Do not treat the game as playable until a tested vertical slice is explicitly marked complete.
+## Build pipeline (planned)
+Roblox Studio + Rojo source synchronization + Git feature branches and pull requests. A Roblox Studio place and verified microphone integration are still required. Do not publish or claim the game is finished until the gates in the roadmap pass.
+
+## Working agreement
+The GitHub repository is the **only persistent source of truth** shared by ChatGPT and Codex. Normal chat messages are not project commits; Codex cannot be expected to read those messages. One subsystem per branch, no concurrent edits to the same files, and no direct feature changes to main. See AGENTS.md.

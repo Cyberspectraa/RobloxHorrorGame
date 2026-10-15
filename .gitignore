@@ -1,0 +1,16 @@
+# Generated Roblox builds, editor and OS clutter
+*.rbxl
+*.rbxl.lock
+*.rbxlx.lock
+*.rbxm.lock
+*.rbxmx.lock
+*.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+temp/
+build/
+dist/
+.env
+.env.*
