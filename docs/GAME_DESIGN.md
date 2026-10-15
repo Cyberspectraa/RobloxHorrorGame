@@ -1,5 +1,15 @@
 # Game design bible v1 — THE RELAY BELOW
-Date: 2026-10-15. Status: proposed creative baseline, subject to owner approval.
+Date: 2026-10-15. Status: psychological/realistic horror direction APPROVED by project owner; remaining game-design details are proposed pending testing and further approval.
+
+## Approved creative direction (2026-10-15)
+The project owner selected **psychological and realistic horror**, rather than the more overtly supernatural or aggressive survival-horror alternatives. This is a binding creative decision for ChatGPT and Codex.
+
+- Begin with plausible, carefully researched coastal relay-station architecture, equipment, signage, maintenance procedures and believable sound propagation.
+- Prioritize mounting dread, uncertain presence, deliberate pacing, intelligent listening/search AI and consequence-driven tension over constant attacks or random jumpscares.
+- Keep The Return physically consistent with the industrial environment. Unsettling elements should remain ambiguous and rare; do not casually add magical powers, arbitrary teleportation, reality-bending level layouts or spectacular paranormal effects.
+- Use quiet, spatial ambience and subtle mechanical audiovisual cues to earn fear; do not substitute red-screen filters, constant chase music or loud stock stingers.
+- Do not interpret realism as dullness: give every zone memorable silhouettes, purposeful small details, and high-quality lighting/audio direction.
+- Any proposal to alter this core direction needs an explicit owner decision recorded in the repository before implementation.
 
 ## One-sentence pitch
 During a night shift beneath an isolated British coastal relay station, 1–4 operators restore a failed warning network while being hunted by a thing that interprets every sound as an invitation.
